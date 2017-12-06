@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img class="title-image" alt="logo" height="40"   src="assets/img/logo.png" >
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar
+      placeholder="Procurar"
+      (ionInput)="getItems($event)">
+    </ion-searchbar>
+
+    <ion-card>
+        <ion-card-header>
+          Cardápio
+        </ion-card-header>
+      
+        <ion-list>
+      
+          <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+              <!--ion-icon ios="ios-pricetag-outline" md="md-pricetag"></ion-icon-->
+              <h2>{{ item.descricao }}</h2>
+              <p>{{ item.situacao }}</p>
+          </button>
+    
+        </ion-list>
+      </ion-card>
+    
+</ion-content>
