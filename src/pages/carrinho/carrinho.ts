@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angul
 
 import { PedidoListaPage } from '../pedido-lista/pedido-lista'
 import {CarrinhoProvider } from '../../providers/carrinho/carrinho';
+import { MesaProvider } from './../../providers/mesas/mesas';
 
 @IonicPage()
 @Component({
@@ -15,8 +16,12 @@ export class CarrinhoPage {
   adicionais: any;
   quantidade:number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public cartService:CarrinhoProvider,public alertCtrl: AlertController,) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cartService:CarrinhoProvider,
+    public alertCtrl: AlertController,
+    private mesaProvider: MesaProvider) {
     this.items = this.navParams.get('items');
     this.adicionais = this.navParams.get('adicionais');
     this.items.quantidade = 1;
@@ -47,8 +52,12 @@ somaQtdItem(qtd,vlr){
    return 'R$ '+ Math.round(total * 10) / 10;
  }
 
- criarPedido(){
-  this.navCtrl.push(PedidoListaPage);
+ criarPedido(item){
+  console.log("criarPedido => " +item);
+  this.mesaProvider.get(item.id).then((result: any) => {
+    this.navCtrl.push(PedidoListaPage, { items:item, 
+                                         pedidos: item.pedidos});
+  });
  }
 
 }

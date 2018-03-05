@@ -63,6 +63,7 @@ export class PedidoPage {
   }
 
   pegaMesaPorId(item) {
+    console.log("pegaMesaPorId => " +item);
     this.mesaProvider.get(item.id)
     .then((result: any) => {
         this.navCtrl.push(PedidoListaPage, { items:item, 

@@ -52,8 +52,8 @@
           <ion-card-content>
               
            <button ion-button full 
-              (click)="criarPedido()"
-              [disabled]="0 === items.length">Checkout</button>
+              (click)="criarPedido(items)"
+              [disabled]="0 === items.length">Salvar Pedido</button>
             </ion-card-content>
         </ion-card>
         </ion-content>
