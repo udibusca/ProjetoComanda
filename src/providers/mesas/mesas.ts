@@ -48,7 +48,6 @@ export class MesaProvider {
       this.http.get(url)
         .subscribe((result: any) => {
           resolve(result.json());
-          console.log(result.json());
         },
         (error) => {
           reject(error.json());
@@ -77,7 +76,6 @@ export class MesaProvider {
       this.http.post(url, mesa)
         .subscribe((result: any) => {
           resolve(result.json());
-          console.log(result.json());
         },
         (error) => {
           reject(error.json());
@@ -110,7 +108,6 @@ export class MesaProvider {
       this.http.delete(url)
         .subscribe((result: any) => {
           resolve(result.json());
-          console.log(url);
         },
         (error) => {
           reject(error.json());

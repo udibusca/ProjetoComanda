@@ -1,18 +1,18 @@
 {
-  "name": "simple-ionic-2-app",
+  "name": "ionic-comanda-app",
   "app_id": "d18aae7e",
   "type": "ionic-angular",
   "secure": false,
   "changeOrigin": true,
   "proxies": [
-    {
-      "path": "/mesa",
-      "proxyUrl": "http://localhost:8080/mesa"
-    },
-    {
-      "path": "/categoria",
-      "proxyUrl": "http://localhost:8080/categoria"
-    }
-  ],  
-  "integrations": {}
+    {"path": "/mesa","proxyUrl": "https://appcomandaonline.herokuapp.com/mesa"},
+    {"path": "/categoria","proxyUrl": "https://appcomandaonline.herokuapp.com/categoria"},
+    {"path": "/produto","proxyUrl": "https://appcomandaonline.herokuapp.com/produto"},
+    {"path": "/adicional","proxyUrl": "https://appcomandaonline.herokuapp.com/adicional"},
+    {"path": "/usuario","proxyUrl": "https://appcomandaonline.herokuapp.com/usuario"},
+    {"path": "/pedidos","proxyUrl": "https://appcomandaonline.herokuapp.com/pedidos"}
+  ],
+  "integrations": {
+    "cordova": {}
+  }
 }

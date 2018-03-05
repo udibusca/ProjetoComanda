@@ -6,11 +6,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
   <ion-list>
     <ion-item-sliding *ngFor="let mesa of mesas">
-      <ion-item (click)="openMesa(mesa.id)">
+      <ion-item (click)="openMesa(mesa)">
         <ion-avatar item-left>
           <img src="assets/img/{{mesa.estado}}.jpg">
       </ion-avatar>        

@@ -35,7 +35,6 @@ export class MesaListarPage {
         if (this.infiniteScroll) {
           this.infiniteScroll.complete();
           if (this.mesas.length == result.length) {
-            console.log('Total de Linhas Retornadas : '+result.length);
             this.infiniteScroll.enable(false);
           }
         }
@@ -53,11 +52,10 @@ export class MesaListarPage {
     }, 500);
   }
 
-  openMesa(id: number) {
-    this.mesaProvider.get(id)
+  openMesa(openMesa) {
+    this.mesaProvider.get(openMesa.id)
       .then((result: any) => {
         this.navCtrl.push('MesaDetalhePage', { mesa: result });
-        console.log('Result do metodo openEditaMesa : '+result);
       })
       .catch((error: any) => {
         this.toast.create({ message: 'Erro ao recuperar dados da mesa. Erro: ' + error.error, 
@@ -99,4 +97,20 @@ export class MesaListarPage {
                             duration: 3000 }).present();
       });
   }
+
+
+  stepPedidoMesa(id: number) {
+    this.mesaProvider.get(id)
+      .then((result: any) => {
+        this.navCtrl.push('MesaDetalhePage', { mesa: result });
+      })
+      .catch((error: any) => {
+        this.toast.create({ message: 'Erro ao recuperar dados da mesa. Erro: ' + error.error, 
+                            position: 'botton', 
+                            duration: 3000 }).present();
+      });
+
+  }  
+
+
 }

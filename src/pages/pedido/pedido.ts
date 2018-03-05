@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 
 import { CategoriaListarPage } from '../../pages/categoria-listar/categoria-listar';
+import { PedidoListaPage } from '../../pages/pedido-lista/pedido-lista';
 
 import { CategoriasProvider } from './../../providers/categorias/categorias';
 import { MesaProvider } from './../../providers/mesas/mesas';
@@ -34,7 +35,6 @@ export class PedidoPage {
     this.mesaProvider.getAll().then(data => {
       loader.dismiss();
       this.items = data
-      console.log(data);
     });
   }
 
@@ -62,21 +62,24 @@ export class PedidoPage {
     });
   }
 
-  pegaMesaPorId(id: number) {
-    this.categoriasProvider.get(id)
+  pegaMesaPorId(item) {
+    this.mesaProvider.get(item.id)
     .then((result: any) => {
-        this.navCtrl.push('CategoriaListarPage', { mesa: result });
-        console.log('Result do metodo openEditaMesa : '+result);
+        this.navCtrl.push(PedidoListaPage, { items:item, 
+                                             pedidos: item.pedidos});
       });
   }
 
 
   CategoriasPedidos(item):void {
-    this.categoriasProvider.get(item.id)
-    .then((result: any) => {
-        this.navCtrl.push(CategoriaListarPage, { mesa: result });
-      });
-    console.log(item);
+    if (item.estado == 'DISPONIVEL') {
+      this.categoriasProvider.getAll()
+      .then((categorias: any) => {
+          this.navCtrl.push(CategoriaListarPage,categorias);
+        });
+    }
+    if (item.estado == 'OCUPADO'){
+      this.pegaMesaPorId(item);
+    }
   }
-
 }

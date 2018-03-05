@@ -13,7 +13,6 @@ export class CategoriasProvider {
       this.http.get(url)
         .subscribe((result: any) => {
           resolve(result.json());
-          console.log(result.json());
         },
         (error) => {
           reject(error.json());
@@ -24,7 +23,6 @@ export class CategoriasProvider {
   get(id: number) {
     return new Promise((resolve, reject) => {
       let url = 'categoria/'+ id;
-      console.log(url);
       this.http.get(url)
         .subscribe((result: any) => {
           resolve(result.json());
@@ -33,6 +31,6 @@ export class CategoriasProvider {
           reject(error.json());
         });
     });
-  }  
+  }
 
 }

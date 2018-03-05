@@ -12,12 +12,10 @@ export class MesaDetalhePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController) {
     this.mesa = this.navParams.data.mesa;
-    console.log('Detales de mesa : '+this.mesa);
   }
 
   fechar(){
     this.viewCtrl.dismiss();
   }
-
 }
 

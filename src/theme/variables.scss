@@ -50,7 +50,7 @@ $smallpadding: 10px 0 10px 0;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
-$primary:      #000;
+$primary:      rgb(231, 84, 84);
 $light-grey:   #f8f8f8;
 $grey:         #e3e3e3;
 $white:        #fff;
@@ -104,4 +104,4 @@ $purple:       #5b507a;
 // --------------------------------------------------
 
 @import "roboto";
-@import "noto-sans";
+@import "noto-sans";    

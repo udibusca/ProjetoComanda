@@ -3,8 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 
 import { CategoriaListarPage } from '../../pages/categoria-listar/categoria-listar';
-
-import { ItemApi } from '../../services/service';
+import { ProdutosProvider } from '../../providers/produtos/produtos';
 
 @Component({
   selector: 'page-home',
@@ -13,35 +12,35 @@ import { ItemApi } from '../../services/service';
 })
 export class HomePage {
 
-  // The items array to populate with data is created
   items: any;
 
-  constructor(
-              public navCtrl: NavController,
-              public params:NavParams,
-              private itemApi: ItemApi
-            )
-            {}
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private produtosProvider: ProdutosProvider) { }
+
 
 ionViewDidLoad() {
-    this.itemApi.getItems().then(data => this.items = data);
+    this.produtosProvider.getAll().then(data => this.items = data);
   }
 
   CategoriaTap($event, categoria) {
     this.navCtrl.push(CategoriaListarPage, {
-        categoria: 'Refeições'
+        id:2,
+        descricao: 'Refeições'
     });
   }
 
   CategoriaTap_2($event, categoria) {
     this.navCtrl.push(CategoriaListarPage, {
-        categoria: 'Doces e Sobremesas'
+      id:3,
+      descricao: 'Doces e Sobremesas'
     });
   }
 
   CategoriaTap_3($event, categoria) {
     this.navCtrl.push(CategoriaListarPage, {
-        categoria: 'Cervejas'
+      id:7,
+      descricao:'Cervejas'
     });
   }
 
