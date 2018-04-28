@@ -4,7 +4,6 @@ import { Http } from '@angular/http';
 
 
 import { ProdutoDetalhePage } from '../../pages/produto-detalhe/produto-detalhe';
-
 import { ProdutosProvider } from '../../providers/produtos/produtos';
 
 @Component({
@@ -24,7 +23,7 @@ export class ProdutoListarPage {
             this.produtos = this.params.get('produtos');
             console.log(this.produtos)
   }
-/*
+
   ionViewDidLoad() {
 
     let loader = this.loadingController.create({
@@ -38,7 +37,7 @@ export class ProdutoListarPage {
     });
   
   }
-*/
+
   getItems(searchbar) {
     var q = searchbar.srcElement.value;
     if (!q) {

@@ -33,4 +33,17 @@ export class ProdutosProvider {
     });
   }
   
+  getProdutoPorCategoria(idCategoria: number) {
+    return new Promise((resolve, reject) => {
+      let url = 'produto/categoria/' + idCategoria;
+      this.http.get(url)
+        .subscribe((result: any) => {
+          resolve(result.json());
+        },
+        (error) => {
+          reject(error.json());
+        });
+    });
+  }
+
 }

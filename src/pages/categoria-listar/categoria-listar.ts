@@ -79,7 +79,7 @@ export class CategoriaListarPage {
   };
 
   openProdutos(categoria) {
-    this.categoriasProvider.get(categoria.id)
+    this.produtosProvider.getProdutoPorCategoria(categoria.id)
       .then((result: any) => {
         this.navCtrl.push(ProdutoListarPage, { produtos: categoria.produto });
       })
