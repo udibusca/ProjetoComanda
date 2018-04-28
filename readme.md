@@ -1,4 +1,4 @@
-# Ionic 3 Projeto integrador
+# Ionic 3 Projeto Comanda
 
 ## Estrutura do projeto
 
