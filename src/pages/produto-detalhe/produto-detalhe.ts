@@ -19,7 +19,6 @@ export class ProdutoDetalhePage {
 
     this.items = this.navParams.get('items');
     this.adicionais = this.navParams.get('adicionais');
-    console.log(this.items.adicional);
   }
 
   fechar(){
@@ -27,8 +26,6 @@ export class ProdutoDetalhePage {
   }
 
   addCarrinho($event,item) {
-    console.log("Metodo addCarrinho => "+item);
-    
     this.produtosProvider.get(item.id)
       .then((result: any) => {
         this.navCtrl.push('CarrinhoPage', {items:item, adicionais: item.adicional });

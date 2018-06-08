@@ -19,9 +19,7 @@ export class ProdutoListarPage {
 
   constructor(public navCtrl: NavController,public params:NavParams,
               private produtosProvider: ProdutosProvider,public loadingController: LoadingController){
-            
             this.produtos = this.params.get('produtos');
-            console.log(this.produtos)
   }
 
   ionViewDidLoad() {
@@ -67,7 +65,6 @@ export class ProdutoListarPage {
   }
 
   openProdutosDetalhe($event,item) {
-    console.log("Produto : "+item)
     this.produtosProvider.get(item.id)
       .then((result: any) => {
         this.navCtrl.push('ProdutoDetalhePage', {items:item, adicionais: item.adicional });

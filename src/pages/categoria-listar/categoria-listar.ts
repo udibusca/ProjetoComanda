@@ -81,7 +81,7 @@ export class CategoriaListarPage {
   openProdutos(categoria) {
     this.produtosProvider.getProdutoPorCategoria(categoria.id)
       .then((result: any) => {
-        this.navCtrl.push(ProdutoListarPage, { produtos: categoria.produto });
+        this.navCtrl.push(ProdutoListarPage, { produtos: result });
       })
       .catch((error: any) => {
         this.toast.create({ message: 'Erro ao recuperar dados da produto. Erro: ' + error.error, 

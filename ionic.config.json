@@ -18,6 +18,10 @@
       "proxyUrl": "http://localhost:8080/produto"
     },
     {
+      "path": "/produto/categoria",
+      "proxyUrl": "http://localhost:8080/produto/categoria"
+    },
+    {
       "path": "/adicional",
       "proxyUrl": "http://localhost:8080/adicional"
     },
