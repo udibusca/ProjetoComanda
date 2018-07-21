@@ -1,59 +1,87 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>
-          Carrinho
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title>
+        Carrinho
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 
-<ion-content>
-        <ion-card>
-              <ion-card-header>
-           Item
-          </ion-card-header>
-            <ion-card-content *ngIf="items.length === 0" >
-              Seu carrinho está vazio!
-            </ion-card-content>
-           <ion-list no-lines>
-             <ion-item >
-            <ion-avatar item-left>
-             <img src="assets/img/2.jpg">
-            </ion-avatar>
-            <h2>{{items.descricao}} </h2>
-            <p>R$
-                <span st>{{items.valor}} <b>x {{items.quantidade}}</b> = 
-                  {{somaQtdItem(items.quantidade,items.valor)}} </span>
-              </p>
-            <div>              
-                <button ion-button small>
-                  <ion-icon name="add" (click)="incQuantidade(items.quantidade)"></ion-icon>
-                </button>
-                <button ion-button small>
-                <ion-icon name="remove" (click)="decQuantidade(items.quantidade)"></ion-icon>
-                </button>
-            </div>
-          </ion-item>
-              <ion-item>
-                <ion-label>Adicionais</ion-label>
-                <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Não" okText="Ok!">
-                  <ion-option *ngFor="let adicional of adicionais" value="adicional.valor">
-                    {{ adicional.descricao }} - R$ {{ adicional.valor }}
-                  </ion-option>
-                </ion-select>
-              </ion-item>         
-        </ion-list>
+<ion-content class="bck1">
+    <div *ngIf="items.length==0">
+      <ion-card>
+          <ion-card-header class="my-teams-header">Seu Carrinho está vazio.</ion-card-header>
           <ion-card-content>
-              <div>Total do item pedido é {{somaQtdItem(items.quantidade,items.valor)}}</div>
+              <p>Você não adicionou nenhum item ao carrinho..</p>
+              <p class="otstup">Vá para a página do prato desejado e clique em "Adicionar ao carrinho".</p>
+              <button ion-button full color="secondary" (click)="goHome()">
+                  <ion-icon name="search"></ion-icon>
+                <div class="margin">Voltar a Home page</div>
+                   </button>
           </ion-card-content>
-         
-            
-        </ion-card>
-        <ion-card>
-          <ion-card-content>
-              
-           <button ion-button full 
-              (click)="criarPedido(items)"
-              [disabled]="0 === items.length">Salvar Pedido</button>
-            </ion-card-content>
-        </ion-card>
-        </ion-content>
+      </ion-card>
+  </div>
+
+  <div>
+
+
+      <!--<p>You have {{shoppingCartItems.length}} items in your bag</p>-->
+      <!--<ion-item ion-item *ngFor="let item of shoppingCartItems">
+      <div *ngIf="item.qty">
+          <ion-icon name="trash" (click)=removeItem(item)></ion-icon>
+          <ion-icon name="thumbs-up" (click)="plusqty(item)"></ion-icon>
+          <ion-icon name="thumbs-down" (click)="minusqty(item)"></ion-icon>
+          <ion-list>id = {{item.id}} and price = {{item.price}} QTY = {{item.qty}}
+          </ion-list>
+      </div>
+
+  </ion-item>-->
+
+      <ion-grid>
+
+          <ion-card wrap>
+              <ion-row>
+
+                  <ion-col>
+                      <p class="sus">{{items.descricao}}</p>
+                  </ion-col>
+
+              </ion-row>
+              <ion-row>
+                  <ion-col col-6 class="wow"> Valor : {{items.valor}}</ion-col>
+
+                  <ion-col col-28></ion-col>
+                  <ion-col>
+                      <ion-icon name="remove-circle" (click)="minusqty(item)" style="zoom:1.5;"></ion-icon>
+                  </ion-col>
+                  <ion-col class="wow">{{items.quantidade}}</ion-col>
+                  <ion-col>
+                      <ion-icon name="add-circle" ({{items.quantidade}}click)="plusqty(item)" style="zoom:1.5;"></ion-icon>
+                  </ion-col>
+                  <ion-col>
+                      <ion-icon name="trash" (click)=removeItem(item) style="zoom:1.5;"></ion-icon>
+                  </ion-col>
+              </ion-row>
+
+
+
+
+
+
+          </ion-card>
+      </ion-grid>
+      <ion-item color="primary" text-center> Preço total </ion-item>
+
+      <ion-item text-wrap>
+          <ion-label>Preciso de ajuda do garçom?</ion-label>
+          <ion-toggle (ionChange)="notify()" [(ngModel)]="isToggled"></ion-toggle>
+      </ion-item>
+      <div class="center">
+          <button ion-button round color="secondary" (click)="post(shoppingCartItems, isToggled)" icon-right text-center>
+              Enviar pedido<ion-icon name="send"></ion-icon> 
+       </button>
+      </div>
+
+
+
+  </div>
+</ion-content>

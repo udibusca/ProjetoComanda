@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map'
   templateUrl: 'pedido-lista.html',
 })
 export class PedidoListaPage {
-	items: any; // A variavel items repeosenta a mesa :: Porque eu não mudo o nome ?
+	items: any; // A variavel items representa a mesa :: Porque eu não mudo o nome ?
   pedidos:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http) {

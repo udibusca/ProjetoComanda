@@ -54,8 +54,8 @@ export class CategoriaListarPage {
         }
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Erro ao listar as categorias. Erro: ' + error.error, 
-                            position: 'botton', 
+        this.toast.create({ message: error.message,
+                            position: 'middle',
                             duration: 3000 }).present();
       });
   }
@@ -72,8 +72,8 @@ export class CategoriaListarPage {
       this.categorias.push(result);
     })
     .catch((error: any) => {
-      this.toast.create({ message: 'Erro ao recuperar dados da produto. Erro: ' + error.error, 
-                          position: 'botton', 
+      this.toast.create({ message: error.message,
+                          position: 'middle',
                           duration: 3000 }).present();
     });
   };
@@ -84,9 +84,9 @@ export class CategoriaListarPage {
         this.navCtrl.push(ProdutoListarPage, { produtos: result });
       })
       .catch((error: any) => {
-        this.toast.create({ message: 'Erro ao recuperar dados da produto. Erro: ' + error.error, 
-                            position: 'botton', 
-                            duration: 3000 }).present();
+        this.toast.create({ message: error.message,
+                            position: 'middle',
+                            duration: 3000}).present();
       });
   }
 

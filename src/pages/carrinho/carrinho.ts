@@ -59,5 +59,4 @@ somaQtdItem(qtd,vlr){
                                          pedidos: item.pedidos});
   });
  }
-
 }
